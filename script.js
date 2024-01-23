@@ -17,17 +17,14 @@ let spanCantidadPersonajes = document.getElementById('cantidadPersonajes');
 let totalPersonajes;
 let paginaActual=1;
 
-// funcion para mostrar los personajes en el html
+
 function mostrarEnElHtml (arrPersonajes) {
-// Mostrar el total de personajes
-    // cuento la cantidad de elementos del arrPersonajes
+
     let numeroPersonajes = arrPersonajes.length;
-    // Aca se lo agrego al span 
     spanCantidadPersonajes.innerText= numeroPersonajes;
 
     // estamos limpiando lo que habia antes en el div
     divPersonajes.innerHTML='';
-    // ahora le agregamos los personajes nuevos que queres mostrar
     arrPersonajes.forEach((itemPersonaje)=>{
         divPersonajes.innerHTML+=` <div class="personaje">
         <img src=${itemPersonaje.image}>
@@ -59,10 +56,6 @@ function pedidoFetch (pagina) {
 pedidoFetch(paginaActual);
 
 
-// Eventos
-// 1- Nos traemos el elemento html que queremos agregarle el evento
-// 2- Crear una funcion que se ejecute cuando se realice el evento
-// 3- Creamos el evento, conectando todo
 
 // Funciones para el filtro
 
@@ -81,11 +74,17 @@ function filtroHombre () {
 }
 
 function filtroSinGenero () {
-  let sinGenero = totalPersonajes.filter((itemPersonaje)=>{
-        return itemPersonaje.gender==='Genderless'
-  });
-  mostrarEnElHtml(sinGenero);
-}
+    let sinGenero = totalPersonajes.filter((itemPersonaje) => {
+      return itemPersonaje.gender === 'Genderless'
+    });
+    if (sinGenero.length === 0) {
+      alert('No hay coincidencias')
+      mostrarEnElHtml(totalPersonajes);
+    }else{
+       mostrarEnElHtml(sinGenero)
+    };
+  };
+  
 
 function filtroDesconocido () {
     let desconocido = totalPersonajes.filter((itemPersonaje)=>{
@@ -106,53 +105,82 @@ botonFiltroTodo.addEventListener('click',filtroTodo);
 botonFiltroDesconocido.addEventListener('click', filtroDesconocido);
 botonFiltroSinGenero.addEventListener('click', filtroSinGenero);
 
-
-botonPrimeraPagina.disabled=true;
-botonAnteriorPagina.disabled=true;
-
-
-// function controlPaginado (pagina){
-// // agregar los controles de todas las situaciones posibles
-// }
-
-// Paginado
+// Paginado - Falta optimizar el código
 function siguientePagina () {
     paginaActual++;
+    pedidoFetch(paginaActual);
     if(paginaActual===42){
-        botonSiguientePagina.disabled=true
-        botonUltimaPagina.disabled=true
-    } else {
+        botonSiguientePagina.disabled=true;
+        botonUltimaPagina.disabled=true;
         botonAnteriorPagina.disabled=false;
         botonPrimeraPagina.disabled=false;
-    }
+    }else{
+        botonSiguientePagina.disabled=false;
+        botonUltimaPagina.disabled=false;
+        botonAnteriorPagina.disabled=false;
+        botonPrimeraPagina.disabled=false;
+    };
     pedidoFetch(paginaActual);
-    // console.log(paginaActual)
+
 };
 
 function anteriorPagina () {
     paginaActual--;
     pedidoFetch(paginaActual);
-    // console.log(paginaActual)
+    if(paginaActual===1){
+        botonAnteriorPagina.disabled=true;
+        botonPrimeraPagina.disabled=true;
+        botonSiguientePagina.disabled=false;
+        botonPrimeraPagina.disabled=false;
+    }else{
+        botonAnteriorPagina.disabled=false;
+        botonPrimeraPagina.disabled=false;
+        botonUltimaPagina.disabled=false;
+        botonSiguientePagina.disabled=false;
+    };
+    pedidoFetch(paginaActual);
+    
 };
 
 function primeraPagina () {
     paginaActual=1;
-    pedidoFetch(1)
-    // console.log(paginaActual)
-}
+    pedidoFetch(paginaActual);
+    if(paginaActual===1){
+        botonAnteriorPagina.disabled=true;
+        botonPrimeraPagina.disabled=true;
+        botonSiguientePagina.disabled=false;
+        botonUltimaPagina.disabled=false;
+    }else{
+        botonAnteriorPagina.disabled=false;
+        botonSiguientePagina.disabled=false;
+        botonPrimeraPagina.disabled=false;
+        botonUltimaPagina.disabled=false;
+    };
+    pedidoFetch(paginaActual);
+};
 
-// 42 paginas
 function ultimaPagina () {
     paginaActual=42;
     pedidoFetch(paginaActual);
-    // console.log(paginaActual)
-}
+    if(paginaActual===42){
+        botonSiguientePagina.disabled=true;
+        botonUltimaPagina.disabled=true;
+        botonAnteriorPagina.disabled=false;
+        botonPrimeraPagina.disabled=false;
+    }else{
+        botonAnteriorPagina.disabled=false;
+        botonSiguientePagina.disabled=false;
+        botonPrimeraPagina.disabled=false;
+        botonUltimaPagina.disabled=false;
+    };
+    pedidoFetch(paginaActual);
+   
+};
+
 
 
 
 botonSiguientePagina.addEventListener('click',siguientePagina);
 botonAnteriorPagina.addEventListener('click',anteriorPagina);
 botonPrimeraPagina.addEventListener('click',primeraPagina);
-botonUltimaPagina.addEventListener('click', ultimaPagina);
-
-
+botonUltimaPagina.addEventListener('click', ultimaPagina)

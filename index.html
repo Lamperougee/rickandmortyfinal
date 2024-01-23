@@ -5,27 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proyecto Rick & Morty</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
 </head>
 <body>
-  <div>
     <div class="cajaTituloPaginado">
       <h1>Rick and Morty</h1>
       <div class="filtrosPaginado">
+        <div class="filtros">
           <button id="filtroTodo">All</button>
           <button id="filtroMujer">Females</button>
           <button id="filtroHombre">Males</button>
           <button id="filtroSinGenero">Genderless</button>
           <button id="filtroDesconocido">Unknown</button>
+        </div>
+        <div class="paginado">
           <button id="primeraPagina"><<</button>
           <button id="anterior"><</button>
           <button id="siguiente">></button>
           <button id="ultimaPagina">>></button>
+        </div>
+      </div>
+      <div class="contenedorPadre">
+        <div id="cantidadPersonajes2">Total de personajes: <scan id="cantidadPersonajes"></scan></div>
+      </div>
     </div>
-    <div class="contenedorPadre">
-      <div id="cantidadPersonajes2">Total de personajes: <scan id="cantidadPersonajes"></scan></div>
-    </div>
-  </div>
-  
+    
     <div id="personajes">
         <!-- <div>
             <img src="">

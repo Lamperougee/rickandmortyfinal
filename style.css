@@ -3,21 +3,22 @@
   padding: 0;
 }
 body {
-  background-color: aquamarine;
+  background-image: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 4, 255));
 }
 
 h1{
   font-size: 2em;
+  margin: auto;
 }
 
 .cajaTituloPaginado{
-  height:2.5em;
   background-image: linear-gradient(to right, rgb(206, 184, 184), rgb(22, 20, 20));
   cursor: pointer;
   background-color: transparent;
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-around;
+  justify-content:center;
+  gap: 10%;
   width: 100%;
   margin-top: 0px;
   top: 0;
@@ -34,17 +35,15 @@ h1{
   cursor: pointer;
 }
 
-
+.filtrosPaginado button:hover{
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+}
   
 #primeraPagina:hover, #siguiente:hover, #anterior:hover, #ultimaPagina:hover, #filtroTodo:hover, #filtroMujer:hover,#filtroHombre:hover, #filtroMujer:hover, #filtroSinGenero:hover, #filtroDesconocido:hover {
   background-color: #f51212;
 }
 
-.contenedorPadre{
-  justify-content: center;
-  text-align: center;
-  margin-left: 5em;
-}
 #cantidadPersonajes, #cantidadPersonajes2{
   font-size: large;
   font-family: Arial, Helvetica, sans-serif;
@@ -52,23 +51,29 @@ h1{
   color: white;
 }
 
-#personajes{
-display: flex;  
-justify-content: space-between;
-flex-wrap:wrap ;
-gap:15px;
-width: 100%;
+#personajes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 100%;
+}
+
+.personaje:hover{
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
 }
 
 .contenedorFooter {
 width: 100%;
 background-color: #212529;
 color: #fff;
-padding: 20px;
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 align-items: flex-end;
+margin-bottom: 0;
+position: sticky;
 }
 
 .footer1 {

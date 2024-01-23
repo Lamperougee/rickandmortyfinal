@@ -1,0 +1,105 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: aquamarine;
+}
+
+h1{
+  font-size: 2em;
+}
+
+.cajaTituloPaginado{
+  height:2.5em;
+  background-image: linear-gradient(to right, rgb(206, 184, 184), rgb(22, 20, 20));
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+  width: 100%;
+  margin-top: 0px;
+  top: 0;
+  position: sticky;
+}
+
+.filtrosPaginado button{
+  border-radius: 10px;
+  background-color: blueviolet;
+  border: solid black 2px;
+  padding: 10px;
+  text-align: center;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  cursor: pointer;
+}
+
+
+  
+#primeraPagina:hover, #siguiente:hover, #anterior:hover, #ultimaPagina:hover, #filtroTodo:hover, #filtroMujer:hover,#filtroHombre:hover, #filtroMujer:hover, #filtroSinGenero:hover, #filtroDesconocido:hover {
+  background-color: #f51212;
+}
+
+.contenedorPadre{
+  justify-content: center;
+  text-align: center;
+  margin-left: 5em;
+}
+#cantidadPersonajes, #cantidadPersonajes2{
+  font-size: large;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0.5em;
+  color: white;
+}
+
+#personajes{
+display: flex;  
+justify-content: space-between;
+flex-wrap:wrap ;
+gap:15px;
+width: 100%;
+}
+
+.contenedorFooter {
+width: 100%;
+background-color: #212529;
+color: #fff;
+padding: 20px;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: flex-end;
+}
+
+.footer1 {
+width: 50%;
+}
+
+.footer2 {
+width: 50%;
+}
+
+
+h4 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
